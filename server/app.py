@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify, abort
 from models import db, Restaurant, RestaurantPizza, Pizza
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///restaurants.db'
 db.init_app(app)
+migrate = Migrate(app, db)
 
 def error_response(message, status_code):
     response = jsonify({"error": message})

@@ -1,4 +1,4 @@
-#!/root/learning/phase-4-flask-python/phase-4-code-challenge-pizzas-Bakeloh/env/bin/python3.8
+#!/root/learning/phase-4-flask-python/phase-4-code-challenge-pizzas-Bakeloh/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
