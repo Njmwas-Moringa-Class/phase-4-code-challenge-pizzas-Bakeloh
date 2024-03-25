@@ -1,9 +1,10 @@
+# models.py
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData, ForeignKey
 from sqlalchemy.orm import relationship, validates
+from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
-from flask_sqlalchemy import SQLAlchemy
-
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -74,8 +75,8 @@ class RestaurantPizza(db.Model, SerializerMixin):
 
     @validates('price')
     def validate_price(self, key, price):
-        if not (isinstance(price, int) and 1 <= price <= 99):
-            raise ValueError("Price must be between 1 and 99.")
+        if not (1 <= price <= 30):
+            raise ValueError("Price must be between 1 and 30.")
         return price
 
     def to_dict(self):
